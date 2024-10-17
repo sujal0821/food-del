@@ -19,6 +19,7 @@ connectDB();
 
 // api endpoint
 app.use("/api/food",foodRouter)
+app.use("/images",express.static('uploads'))
 
 app.get("/",(req,res)=>{
     res.send("API Working")
@@ -29,4 +30,3 @@ app.listen(port,()=>{
 })
 
 
-//mongodb+srv://sujal0821:<db_password>@cluster0.c0h7d.mongodb.net/?
