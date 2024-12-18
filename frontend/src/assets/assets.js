@@ -230,7 +230,7 @@ export const food_list = [
         name: "Bread Sandwich",
         image: food_16,
         price: 24,
-        description: " ",
+        description: "Freshly made with soft bread and your choice of delicious fillings. ",
         category: "Sandwich"
     }, {
         _id: "17",
