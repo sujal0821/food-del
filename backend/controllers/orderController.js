@@ -7,7 +7,8 @@ const stripe =new Stripe(process.env.STRIPE_SECRET_KEY)
 
 //placing user order for payment 
 const placeOrder =async (req,res)=>{
-
+debugger;
+console.log("sdvsz")
     const frontend_url="http://localhost:5173";
     try {
         const newOrder=new orderModel({
