@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: food-delivery-backend
+    env: node
+    region: ohio
+    plan: free
+    buildCommand: |
+      cd backend
+      npm install
+      rm -rf node_modules/bcrypt
+      npm install bcryptjs
+      npm install --no-save bcrypt@latest --build-from-source
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 16
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /api/food/list
+    autoDeploy: true 

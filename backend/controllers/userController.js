@@ -1,7 +1,7 @@
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 import validator from "validator";
+import { hashPassword, comparePassword } from "../utils/passwordUtils.js";
 
 // login user
 const loginUser = async (req, res) => {
@@ -10,17 +10,17 @@ const loginUser = async (req, res) => {
     const user = await userModel.findOne({ email });
 
     if (!user) {
-      return res.json({ sucess: false, message: "User doesn't exist" });
+      return res.json({ success: false, message: "User doesn't exist" });
     }
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await comparePassword(password, user.password);
     if (!isMatch) {
-      return res.json({ sucess: false, message: "Invalid Credentials" });
+      return res.json({ success: false, message: "Invalid Credentials" });
     }
     const token = createToken(user._id);
     res.json({ success: true, token });
   } catch (error) {
     console.log(error);
-    res.json({success:false,message:"error"})
+    res.json({success: false, message: "Error during login"});
   }
 };
 
@@ -63,8 +63,7 @@ const registerUser = async (req, res) => {
     }
 
     // Hashing user password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await hashPassword(password, 10);
 
     // Creating new user
     const newUser = new userModel({
@@ -80,7 +79,7 @@ const registerUser = async (req, res) => {
     res.json({ success: true, token });
   } catch (error) {
     console.log(error);
-    res.json({ success: false, message: "Error" });
+    res.json({ success: false, message: "Error during registration" });
   }
 };
 
