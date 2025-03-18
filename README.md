@@ -2,7 +2,7 @@
 
 A full-stack food delivery application with features for browsing restaurants, ordering food, and tracking deliveries. Built with React, Redux, Node.js, Express, and MongoDB.
 
-![Food Delivery App]([image](https://github.com/user-attachments/assets/1bb790e3-e448-451d-9f0f-9d5ec2ae3fdb))
+[![Food Delivery App](https://github.com/user-attachments/assets/1bb790e3-e448-451d-9f0f-9d5ec2ae3fdb)](https://github.com/user-attachments/assets/1bb790e3-e448-451d-9f0f-9d5ec2ae3fdb)
 
 ## 🌟 Live Demo
 
