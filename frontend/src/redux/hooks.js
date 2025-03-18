@@ -41,6 +41,7 @@ export const useFoodList = () => {
 
   useEffect(() => {
     if (foodStatus === 'idle') {
+      console.log('Initializing food list fetch...');
       dispatch(fetchFoodList());
     }
   }, [foodStatus, dispatch]);
@@ -48,7 +49,10 @@ export const useFoodList = () => {
   return {
     foodList,
     foodStatus,
-    refreshFoodList: () => dispatch(fetchFoodList())
+    refreshFoodList: () => {
+      console.log('Manually refreshing food list...');
+      return dispatch(fetchFoodList());
+    }
   };
 };
 

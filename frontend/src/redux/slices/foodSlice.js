@@ -10,10 +10,14 @@ export const fetchFoodList = createAsyncThunk(
   'food/fetchFoodList',
   async (_, { rejectWithValue }) => {
     try {
+      console.log('Fetching food list from:', `${url}/api/food/list`);
       const response = await axios.get(`${url}/api/food/list`);
+      console.log('Food list response:', response.data);
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      console.error('Error fetching food list:', error);
+      console.error('Error details:', error.response || error.message || error);
+      return rejectWithValue(error.response?.data || error.message);
     }
   }
 );

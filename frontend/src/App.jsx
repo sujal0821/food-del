@@ -6,14 +6,16 @@ import Home from "./pages/Home/Home";
 import PlaceOrder from "./pages/PlaceOrder/PlaceOrder.jsx";
 import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
+import ApiHealthCheck from "./components/ApiHealthCheck";
 
 const App = () => {
   
-  const [showLogin,setshowLogin] = useState(false)
+  const [showLogin, setshowLogin] = useState(false);
+  const [showApiHealth, setShowApiHealth] = useState(true);
 
   return (
     <>
-    {showLogin && <LoginPopup setshowLogin={setshowLogin}/>}<></>
+      {showLogin && <LoginPopup setshowLogin={setshowLogin}/>}
       <div className="app">
         <Navbar setshowLogin={setshowLogin}/>
         <Routes>
@@ -23,6 +25,12 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
+      {showApiHealth && <ApiHealthCheck />}
+      <div style={{ position: 'fixed', bottom: '10px', left: '10px', zIndex: 1000 }}>
+        <button onClick={() => setShowApiHealth(!showApiHealth)}>
+          {showApiHealth ? 'Hide' : 'Show'} API Status
+        </button>
+      </div>
     </>
   );
 };

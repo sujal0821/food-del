@@ -13,13 +13,9 @@ dotenv.config()
 const app = express()
 const port = process.env.port ||  4000;
 
-// CORS configuration
+// CORS configuration - allow all origins for now to debug
 const corsOptions = {
-  origin: [
-    'http://localhost:5173',  // Vite default
-    'http://localhost:3000',  // Common React port
-    'https://your-frontend-domain.com', // Add your production frontend domain here
-  ],
+  origin: '*', // This allows requests from any origin
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'token']
@@ -28,6 +24,9 @@ const corsOptions = {
 //middleware
 app.use(express.json())
 app.use(cors(corsOptions))
+
+// Handle OPTIONS requests for CORS preflight
+app.options('*', cors(corsOptions));
 
 //db connection
 connectDB();
