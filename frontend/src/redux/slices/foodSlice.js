@@ -1,7 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { API_BASE_URL } from '../../config';
 
-const url = "http://localhost:4000";
+// const url = "http://localhost:4000";
+// const url = "https://food-del-backend-hjel.onrender.com";
+const url = API_BASE_URL;
 
 export const fetchFoodList = createAsyncThunk(
   'food/fetchFoodList',

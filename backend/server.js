@@ -9,16 +9,25 @@ import orderRouter from "./routes/orderRoute.js"
 
 dotenv.config()
 
-
-
 // app config
 const app = express()
 const port = process.env.port ||  4000;
 
+// CORS configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:5173',  // Vite default
+    'http://localhost:3000',  // Common React port
+    'https://your-frontend-domain.com', // Add your production frontend domain here
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'token']
+};
 
 //middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 
 //db connection
 connectDB();
@@ -29,7 +38,6 @@ app.use("/images",express.static('uploads'))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
-
 
 app.get("/",(req,res)=>{
     res.send("API Working")

@@ -3,9 +3,12 @@ import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
 import { useAuth } from "../../redux/hooks";
 import axios from "axios";
+import { API_BASE_URL } from '../../config';
 
 const LoginPopup = ({ setshowLogin }) => {
-  const url = "http://localhost:4000";
+  // const url = "http://localhost:4000";
+  // const url = "https://food-del-backend-hjel.onrender.com";
+  const url = API_BASE_URL;
   const { setToken } = useAuth();
 
   const [currState, setCurrState] = useState("Login");

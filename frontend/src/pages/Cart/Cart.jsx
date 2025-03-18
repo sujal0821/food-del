@@ -2,11 +2,14 @@ import React from "react";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
 import { useCart, useFoodList } from '../../redux/hooks';
+import { API_BASE_URL } from '../../config';
 
 const Cart = () => {
   const { cartItems, cartTotal, removeFromCart } = useCart();
   const { foodList } = useFoodList();
-  const url = "http://localhost:4000";
+  // const url = "http://localhost:4000";
+  // const url = "https://food-del-backend-hjel.onrender.com";
+  const url = API_BASE_URL;
 
   const navigate = useNavigate();
 

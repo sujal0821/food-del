@@ -2,10 +2,13 @@ import React from 'react'
 import './FoodItem.css'
 import { assets } from '../../assets/assets'
 import { useCart } from '../../redux/hooks';
+import { API_BASE_URL } from '../../config';
 
 const FoodItem = ({id, name, price, description, image}) => {
   const { cartItems, addToCart, removeFromCart } = useCart();
-  const url = "http://localhost:4000";
+  // const url = "http://localhost:4000";
+  // const url = "https://food-del-backend-hjel.onrender.com";
+  const url = API_BASE_URL;
   
   return (
     <div className='food-item'>
